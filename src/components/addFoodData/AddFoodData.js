@@ -46,7 +46,7 @@ const AddFoodData = () => {
       try {
         const imageRef = ref(
           storage,
-          `RazorpayIconImage/${Date.now() + image.name}`
+          `FoodImages/${Date.now() + image.name}`
         );
         await uploadBytes(imageRef, image);
 
