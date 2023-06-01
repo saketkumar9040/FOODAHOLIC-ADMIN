@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { db } from "../../firebase/FirebaseConfig";
+import { db , auth } from "../../firebase/FirebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
+import {  useNavigate } from 'react-router-dom';
+import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import "./SignUp.css"
 
 const SignUp = () => {
+
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,18 +16,28 @@ const SignUp = () => {
   
   const submitHandler = async (e) => {
     e.preventDefault();
-    const adminData ={
-      name,
-      email,
-      phone,
-      password,
-      id:new Date().getTime().toString(),
-    }
+   
     try {
+      await createUserWithEmailAndPassword(auth,email,password)
+      .then(async (userCredentials) => {
+        // console.log(userCredentials)
+       if(userCredentials?.user?.uid){
+        const adminData ={
+          name,
+          email,
+          phone,
+          password,
+          uid: userCredentials?.user?.uid,
+        }
       const docRef = await addDoc(collection(db, "AdminData"), adminData);
       console.log(docRef.id);
       alert("data added successfully", docRef.id);
-      window.location.reload(true); // to refresh page after data is added
+      navigate("/addfood");
+      }})
+      .catch((error)=>{
+        console.log(error)
+        alert(error.message)
+      })// to refresh page after data is added
     } catch (error) {
       alert("Unable to Sign Up", error);
     }
