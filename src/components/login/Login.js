@@ -11,15 +11,16 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submitHandler = (e) => {
+  const submitHandler = async(e) => {
     e.preventDefault();
 
-    signInWithEmailAndPassword(auth, email, password)
+   await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
         navigate("/addfood");
+        alert("user logged In successful")
       })
       .catch((error) => {
         const errorCode = error.code;

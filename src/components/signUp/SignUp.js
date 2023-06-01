@@ -30,9 +30,9 @@ const SignUp = () => {
           uid: userCredentials?.user?.uid,
         }
       const docRef = await addDoc(collection(db, "AdminData"), adminData);
-      console.log(docRef.id);
-      alert("data added successfully", docRef.id);
-      navigate("/addfood");
+      // console.log(docRef.id);
+      alert("data added successfully. Please login to your account to continue...");
+      navigate("/login");
       }})
       .catch((error)=>{
         console.log(error)
@@ -73,8 +73,8 @@ const SignUp = () => {
           <br/>
           <label className="text">password</label>
           <input
-            type="text"
-            name="name"
+            type="password"
+            name="password"
             className="input-box"
             onChange={(e) => {setPassword(e.target.value)}}
           />
