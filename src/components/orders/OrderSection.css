@@ -1,0 +1,108 @@
+.order-section .order-head1 {
+    font-size: 40px;
+    font-weight: 600;
+    color:cornsilk;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.order-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: cornsilk;
+    width: 100%;
+    height: 70vh;
+    overflow-y: scroll;
+}
+.order-row-card1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    background-color: black;
+    color: cornsilk;
+    box-sizing: 0px 0px 10px grey;
+    margin: 10px 10px;
+    width: 95%;
+    border-radius: 10px;
+}
+.order-text{
+    background-color: black;
+    width: 35%;
+    font-weight: 600;
+    text-align: center;
+}
+.order-status-text{
+    /* background-color: black; */
+    /* width: 35%; */
+    font-weight: 600;
+    text-align: center;
+}
+.order-s1-in{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: cornsilk;
+    width: 100%;
+    /* height: 70vh;
+    overflow-y: scroll; */
+}
+.order-s1-in p{
+    color: cornsilk;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #ff4242;
+
+}
+.order-row-card1 button{
+    width: 170px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: black;
+    border: none;
+    color: cornsilk;
+    font-weight: 600;
+    /* cursor: pointer; */
+    margin: 0px 10px;
+}
+.order-s1{
+    margin-left: 100px;
+    /* width: 40%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px;
+}
+.order-s1-in{
+    display: flex;
+    flex-direction: column;
+    background-color: #ff4242;
+}
+.order-s1-in select{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 3px solid black;
+    color: #ff4242;
+}
+.search-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 100px;
+    padding: 10px;
+    background-color: cornsilk;
+    color: #ff4242;
+    font-size: 20px;
+    font-weight: 700;
+    box-shadow: 0px 0px 10px black;
+    width: 550px;
+    border-radius: 30px;
+    border: 1px solid #ff4242;
+    margin-right: 20px;
+}
+.order-s1 input{
+    color: #ff4242;
+}
