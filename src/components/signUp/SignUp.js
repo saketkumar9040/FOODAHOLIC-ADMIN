@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import {firebase} from "../../firebase/FirebaseConfig" 
+import { db } from "../../firebase/FirebaseConfig";
+import { addDoc, collection } from "firebase/firestore";
+import "./SignUp.css"
 
 const SignUp = () => {
 
@@ -10,7 +12,23 @@ const SignUp = () => {
   
   const submitHandler = async (e) => {
     e.preventDefault();
+    const adminData ={
+      name,
+      email,
+      phone,
+      password,
+      id:new Date().getTime().toString(),
+    }
+    try {
+      const docRef = await addDoc(collection(db, "AdminData"), adminData);
+      console.log(docRef.id);
+      alert("data added successfully", docRef.id);
+      window.location.reload(true); // to refresh page after data is added
+    } catch (error) {
+      alert("Unable to Sign Up", error);
+    }
   }
+
   return (
     <div className='main-container'>
       <div className="title">Sign Up</div>
