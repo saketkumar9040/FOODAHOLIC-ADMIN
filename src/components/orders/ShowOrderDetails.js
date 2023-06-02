@@ -7,7 +7,7 @@ const showOrderDetails = () => {
   return (
     <div className='order-section'>
       <Navbar/>
-      <Link to="/orders">
+      <Link to="/orders" style={{marginTop:"10px"}}>
         <button className='go-back-button'>Go Back</button>
       </Link>
     </div>

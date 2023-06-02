@@ -1,0 +1,15 @@
+ .order-section{
+
+ }
+
+.go-back-button{
+    color:cornsilk;
+    background-color:transparent;
+    margin:0 10px;
+    cursor: pointer;
+    border:3px solid white;
+    font-size: 20px;
+    font-weight: 700;
+    padding:5px 20px;
+    border-radius: 20px;
+ }
