@@ -1,5 +1,5 @@
 .navbar{
-    background-color: black;
+    /* background-color: black; */
     color: cornsilk;
     display: flex;
     align-items: center;
@@ -16,23 +16,31 @@
    align-items: center;
    width: 20%;
    height: 3rem;
-   background-color: black;
+   background-color:transparent;
 }
 .nav-right{
    display: flex;
    justify-content: right;
    align-items: center;
    width:50%;
-   background-color: black;
+   background-color:transparent;
 
+}
+.head-container{
+    background-color:transparent;
+    display: flex;
+    flex-direction: row;
+    /* width: 40%; */
+    align-items: center;
+  
 }
 .head-text{
     color : cornsilk;
-    background-color: black;
+    background-color:transparent;
 }
 .nav-right p{
     color:cornsilk;
-    background-color: black;
+    background-color:transparent;
     margin:0 10px;
     cursor: pointer;
     border:2px solid white;
