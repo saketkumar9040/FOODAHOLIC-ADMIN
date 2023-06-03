@@ -40,6 +40,10 @@ const ShowOrderDetails = () => {
         <h1 className="order-heading">ORDER - DETAILS</h1>
         <div className="order-details-form">
           <div className="order-details-row">
+            <p>Order Id</p>
+            <p>{orderData.orderid}</p>
+          </div>
+          <div className="order-details-row">
             <p>Customer Name</p>
             <p>{orderData.ordererName}</p>
           </div>
@@ -54,6 +58,10 @@ const ShowOrderDetails = () => {
           <div className="order-details-row">
             <p>Order status</p>
             <p>{orderData.orderStatus}</p>
+          </div>
+          <div className="order-details-row">
+            <p>Order total</p>
+            <p>{orderData.paymentTotal}</p>
           </div>
         </div>
       </div>
