@@ -75,8 +75,9 @@ const OrderSection = () => {
   // console.log(allOrders);
 
   return (
-    <div className="order-section">
+    <>
       <Navbar />
+    <div className="order-section">
       <h1 className="order-head1">ORDER - SECTION</h1>
       <div className="order-s1">
         <input
@@ -230,6 +231,7 @@ const OrderSection = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
