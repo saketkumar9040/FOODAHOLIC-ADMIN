@@ -5,19 +5,30 @@
     text-align: center;
     margin-bottom: 2rem;
 }
-.order-section{
+/* .order-section{
     margin: 0;
     padding: 0;
-}
+} */
 .order-container{
-    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: cornsilk;
     width: 100%;
     height: 70vh;
+    border-radius: 20px;
     overflow-y: scroll;
+}
+.order-container-title{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:transparent;
+    width: 100%;
+    /* height: 70vh; */
+    
 }
 .order-row-card1{
     display: flex;
@@ -31,9 +42,13 @@
     margin: 10px 10px;
     width: 95%;
     border-radius: 10px;
+    border: 4px solid cornsilk;
+}
+.order-head1{
+    background-color: transparent;
 }
 .order-text{
-    background-color: black;
+    background-color: transparent;
     width: 35%;
     font-weight: 600;
     text-align: center;
@@ -55,7 +70,7 @@
     color: cornsilk;
     font-size: 20px;
     font-weight: 600;
-    background-color: #ff4242;
+    background-color: transparent;
 
 }
 .order-row-card1 button{
@@ -75,13 +90,14 @@
     align-items: center;
     /* justify-content: space-between; */
     margin: 20px 0px;
+    background-color: transparent;
 }
 .order-s1-in{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: #ff4242;
+    background-color: transparent;
 }
 .order-s1-in select{
     width: 250px;
@@ -123,6 +139,7 @@
     margin: 10px 10px;
     width: 95%;
     border-radius: 10px; 
+    border: 4px solid cornsilk;
 }
 .show-detail-button{
     /* width: 100px; */

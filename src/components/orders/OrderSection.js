@@ -5,6 +5,7 @@ import { getDocs, collection, doc, setDoc } from "firebase/firestore";
 import { db, storage } from "../../firebase/FirebaseConfig";
 import { Link, Navigate } from "react-router-dom";
 import foodImage from "../../assets/food-wallpaper.jpg"
+import backgroundImage from "../../assets/order-section-background.jpg"
 
 const OrderSection = () => {
   const [allOrders, setAllOrders] = useState([]);
@@ -77,7 +78,7 @@ const OrderSection = () => {
   return (
     <>
       <Navbar />
-    <div className="order-section">
+    <div className="order-section" style={{ backgroundImage:`url(${backgroundImage})`,backgroundRepeat:"repeat" }}>
       <h1 className="order-head1">ORDER - SECTION</h1>
       <div className="order-s1">
         <input
@@ -97,7 +98,7 @@ const OrderSection = () => {
           </select>
         </div>
       </div>
-      <div className="order-container" style={{ backgroundImage:`url(${foodImage})`,backgroundRepeat:"repeat" }}>
+      <div className="order-container-title">
         <div className="order-row-card1">
           <p className="order-text">Order Id</p>
           <p className="order-text">Paid</p>
@@ -108,7 +109,7 @@ const OrderSection = () => {
           <p className="order-text">Cost</p>
           <button>Show Details</button>
         </div>
-        <div className="order-container"  style={{ backgroundImage:`url(${foodImage})`,backgroundRepeat:"repeat" }}>
+        <div className="order-container"  style={{ backgroundImage:`url(${foodImage})`,backgroundRepeat:"no-repeat" }}>
           {/** DATA */}
           {allOrders.filter((val) => {
              if(keyword === ""){
