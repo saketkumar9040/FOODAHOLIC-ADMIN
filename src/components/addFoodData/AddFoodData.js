@@ -5,6 +5,7 @@ import { db, storage } from "../../firebase/FirebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Navbar from "../navbar/Navbar";
+import addFoodBackground from "../../assets/add-food-background.jpg"
 
 const AddFoodData = () => {
   const [foodName, setFoodName] = useState("");
@@ -90,7 +91,8 @@ const AddFoodData = () => {
   return (
     <>
       <Navbar />
-      <div className="main-container">
+      <div className="main-container" style={{ backgroundImage:`url(${addFoodBackground})`,
+    backgroundRepeat:"no-repeat",backgroundSize:"cover",height:"100%"}}>
         <div className="title">Add Food Data</div>
         <form className="form-container">
           <label className="text">Food Name</label>
