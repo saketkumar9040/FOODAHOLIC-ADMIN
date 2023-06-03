@@ -1,5 +1,14 @@
  .order-section{
-
+    padding: 10px;
+ }
+ .order-heading{
+    width: 100%;
+    font-size: 50px;
+    font-weight: 600;
+    text-align: flex-start;
+    color: cornsilk;
+    margin-bottom: 30px;
+    background-color: transparent;
  }
 
 .go-back-button{
@@ -12,4 +21,39 @@
     font-weight: 700;
     padding:5px 20px;
     border-radius: 20px;
+ }
+ .order-details-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 60%;
+    height: 100%;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+
+ }
+ .order-details-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    margin: 10px 0px;
+    background-color: cornsilk;
+ }
+ .order-details-row p{
+    font-size: 20px;
+    font-weight: 900;
+    color: black;
+    background-color: transparent;
  }
