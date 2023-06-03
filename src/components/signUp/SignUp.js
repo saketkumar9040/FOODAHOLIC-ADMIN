@@ -3,7 +3,8 @@ import { db , auth } from "../../firebase/FirebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 import {  useNavigate } from 'react-router-dom';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
-import "./SignUp.css"
+import "./SignUp.css";
+import signUpImage from "../../assets/login-background.jpg"
 
 const SignUp = () => {
 
@@ -44,7 +45,8 @@ const SignUp = () => {
   }
 
   return (
-    <div className='main-container'>
+    <div className='main-container' style={{ backgroundImage:`url(${signUpImage})`,
+    backgroundRepeat:"no-repeat",backgroundSize:"cover",height:"100%"}}>
       <div className="title">Sign Up</div>
       <form className="form-container">
           <label className="text">Name</label>
