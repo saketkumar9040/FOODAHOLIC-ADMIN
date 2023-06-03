@@ -4,6 +4,7 @@ import Navbar from "../navbar/Navbar";
 import { getDocs, collection, doc, setDoc } from "firebase/firestore";
 import { db, storage } from "../../firebase/FirebaseConfig";
 import { Link, Navigate } from "react-router-dom";
+import foodImage from "../../assets/food-wallpaper.jpg"
 
 const OrderSection = () => {
   const [allOrders, setAllOrders] = useState([]);
@@ -95,7 +96,7 @@ const OrderSection = () => {
           </select>
         </div>
       </div>
-      <div className="order-container">
+      <div className="order-container" style={{ backgroundImage:`url(${foodImage})`,backgroundRepeat:"repeat" }}>
         <div className="order-row-card1">
           <p className="order-text">Order Id</p>
           <p className="order-text">Paid</p>
@@ -106,7 +107,7 @@ const OrderSection = () => {
           <p className="order-text">Cost</p>
           <button>Show Details</button>
         </div>
-        <div className="order-container">
+        <div className="order-container"  style={{ backgroundImage:`url(${foodImage})`,backgroundRepeat:"repeat" }}>
           {/** DATA */}
           {allOrders.filter((val) => {
              if(keyword === ""){

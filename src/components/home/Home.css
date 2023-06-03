@@ -1,8 +1,9 @@
 .home-container{
-    flex-direction: row;
+    flex-direction: row; 
     align-items: center;
     justify-content: center;
-    padding:50px;
+    padding-top:111px;  
+    padding-bottom: 128px;
 }
 .title {
     display: flex;
@@ -11,6 +12,8 @@
     color: cornsilk;
     font-size: 50px;
     font-weight: 800;
+    background-color: transparent;
+    border-radius: 50px;  
   }
   .buttonContainer{
     display: flex;
@@ -20,6 +23,7 @@
     margin: 30px;
     padding: 10px;
     text-decoration: none;
+    background-color: transparent;
   }
   .button {
     padding: 10px;
@@ -42,6 +46,10 @@
     justify-content: center;
     align-items: center;
     color: cornsilk;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 30px;
+    font-weight: 900;
+    background-color: transparent;
+    z-index: 1;
+    margin-left: 250px;
+    margin-right: 250px;
   }
