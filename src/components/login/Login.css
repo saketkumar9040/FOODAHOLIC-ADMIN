@@ -1,9 +1,16 @@
 .main-container {
-    padding-left: 100px;
-    padding-right: 100px;
     display: flex;
-    flex-direction: column;
-    background-color: #ff4242;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top:13px;  
+    padding-bottom: 30px;
+    
+  }
+  .form-container{
+    background-color: transparent;
+    width: 500px;
+
   }
   .title {
     display: flex;
@@ -13,11 +20,13 @@
     font-size: 50px;
     font-weight: 800;
     margin: 30px;
+    background-color: transparent;
   }
   .text {
     color: cornsilk;
-    font-size: 25px;
+    font-size: 50px;
     font-weight: 600;
+    background-color: transparent;
   }
   .input-box  {
     padding-left: 20px;
@@ -29,6 +38,7 @@
     border-color: rgb(48, 40, 40);
     font-size: 15px;
     font-weight: 700;  
+   
   }
   .buttonContainer{
     display: flex;

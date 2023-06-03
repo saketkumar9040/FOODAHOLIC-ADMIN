@@ -3,6 +3,7 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/FirebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import signUpImage from "../../assets/sign-up-background.jpg"
 
 const Login = () => {
 
@@ -30,7 +31,8 @@ const Login = () => {
   };
 
   return (
-    <div className="main-container">
+    <div className="main-container"  style={{ backgroundImage:`url(${signUpImage})`,
+    backgroundRepeat:"no-repeat",backgroundSize:"cover",height:"100%"}}>
       <div className="title">Login</div>
       <form className="form-container">
         <label className="text">E-mail</label>
