@@ -4,8 +4,8 @@ import Navbar from "../navbar/Navbar";
 import { getDocs, collection, doc, setDoc } from "firebase/firestore";
 import { db, storage } from "../../firebase/FirebaseConfig";
 import { Link, Navigate } from "react-router-dom";
-import foodImage from "../../assets/food-wallpaper.jpg"
-import backgroundImage from "../../assets/order-section-background.jpg"
+import foodImage from "../../assets/food-wallpaper.jpg";
+import backgroundImage from "../../assets/order-section-background.jpg";
 
 const OrderSection = () => {
   const [allOrders, setAllOrders] = useState([]);
@@ -29,7 +29,7 @@ const OrderSection = () => {
     const docRef = doc(db, "UserOrders", id);
     const data = {
       ...orderData,
-      orderStatus: status,
+      orderstatus: status,
     };
     setDoc(docRef, data)
       .then(() => {
@@ -45,7 +45,7 @@ const OrderSection = () => {
     const docRef = doc(db, "UserOrders", id);
     const data = {
       ...orderData,
-      deliveryBoyName: name,
+      deliveryboyname: name,
     };
     setDoc(docRef, data)
       .then(() => {
@@ -61,7 +61,7 @@ const OrderSection = () => {
     const docRef = doc(db, "UserOrders", id);
     const data = {
       ...orderData,
-      deliveryBoyPhone: phone,
+      deliveryboyphone: phone,
     };
     setDoc(docRef, data)
       .then(() => {
@@ -78,160 +78,189 @@ const OrderSection = () => {
   return (
     <>
       <Navbar />
-    <div className="order-section" style={{ backgroundImage:`url(${backgroundImage})`,backgroundRepeat:"repeat" }}>
-      <h1 className="order-head1">ORDER - SECTION</h1>
-      <div className="order-s1">
-        <input
-          type="text"
-          placeholder="Search order..."
-          className="search-bar"
-          onChange={(e) => setKeyword((e.target.value).toLowerCase())}
-        />
-        <div className="order-s1-in">
-          <p>Sort by Order Status</p>
-          <select className="order-status-text" onChange={(e)=>setAllOrdersStatus((e.target.value).toLowerCase())}>
-            <option value="">All</option>
-            <option value="pending">Pending</option>
-            <option value="ontheway">On the way</option>
-            <option value="delivered">Delivered</option>
-            <option value="cancelled">Cancelled</option>
-          </select>
+      <div
+        className="order-section"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundRepeat: "repeat",
+        }}
+      >
+        <h1 className="order-head1">ORDER - SECTION</h1>
+        <div className="order-s1">
+          <input
+            type="text"
+            placeholder="Search order..."
+            className="search-bar"
+            onChange={(e) => setKeyword(e.target.value.toLowerCase())}
+          />
+          <div className="order-s1-in">
+            <p>Sort by Order Status</p>
+            <select
+              className="order-status-text"
+              onChange={(e) => setAllOrdersStatus(e.target.value.toLowerCase())}
+            >
+              <option value="">All</option>
+              <option value="pending">Pending</option>
+              <option value="ontheway">On the way</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+        <div className="order-container-title">
+          <div className="order-row-card1">
+            <p className="order-text">Order Id</p>
+            <p className="order-text">Paid</p>
+            <p className="order-text">Delivery Status</p>
+            <p className="order-text">Delivery Boy Name</p>
+            <p className="order-text">Delivery Boy Phone</p>
+
+            <p className="order-text">Cost</p>
+            <button>Show Details</button>
+          </div>
+          <div
+            className="order-container"
+            style={{
+              backgroundImage: `url(${foodImage})`,
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            {/** DATA */}
+            {allOrders
+              .filter((val) => {
+                if (keyword === "") {
+                  return val;
+                } else if (
+                  val.orderid.toLowerCase().includes(keyword) ||
+                  val.orderstatus.toLowerCase().includes(keyword) ||
+                  val.deliveryboyname.toLowerCase().includes(keyword) ||
+                  val.orderaddress.toLowerCase().includes(keyword) ||
+                  val.ordername.toLowerCase().includes(keyword)
+                ) {
+                  return val;
+                }
+              })
+              .filter((val) => {
+                if (allOrdersStatus === "") {
+                  return val;
+                } else if (
+                  val.orderstatus.toLowerCase().includes(allOrdersStatus)
+                ) {
+                  return val;
+                }
+              })
+              .map((order) => {
+                return (
+                  <div className="order-row-card" key={order.orderid}>
+                    <p className="order-text">{order.orderid}</p>
+                    <p className="order-text">{order.orderpayment}</p>
+                    <div className="order-card-in">
+                      {order.orderstatus === "pending" && (
+                        <select
+                          onChange={(e) => {
+                            changeOrderStatus(
+                              order.orderid,
+                              order,
+                              e.target.value
+                            );
+                          }}
+                        >
+                          <option value="pending">Pending</option>
+                          <option value="ontheway">On the way</option>
+                          <option value="delivered">Delivered</option>
+                          <option value="cancelled">Cancelled</option>
+                        </select>
+                      )}
+                      {order.orderstatus === "ontheway" && (
+                        <select
+                          onChange={(e) => {
+                            changeOrderStatus(
+                              order.orderid,
+                              order,
+                              e.target.value
+                            );
+                          }}
+                        >
+                          <option value="pending">Pending</option>
+                          <option value="ontheway">On the way</option>
+                          <option value="delivered">Delivered</option>
+                          <option value="cancelled">Cancelled</option>
+                        </select>
+                      )}
+                      {order.orderstatus === "delivered" && (
+                        <select
+                          onChange={(e) => {
+                            changeOrderStatus(
+                              order.orderid,
+                              order,
+                              e.target.value
+                            );
+                          }}
+                        >
+                          <option value="delivered">Delivered</option>
+                          <option value="pending">Pending</option>
+                          <option value="ontheway">On the way</option>
+                          <option value="cancelled">Cancelled</option>
+                        </select>
+                      )}
+                      {order.orderstatus === "cancelled" && (
+                        <p className="order-text">{order.orderstatus}</p>
+                      )}
+                    </div>
+
+                    {
+                      // DELIVERY BOY NAME
+                      order.deliveryboyname ? (
+                        <p className="order-text">{order.deliveryboyname}</p>
+                      ) : (
+                        <input
+                          type="text"
+                          placeholder="Enter Name"
+                          className="order-input"
+                          onBlur={(e) => {
+                            changeDeliveryBoyName(
+                              order.orderid,
+                              order,
+                              e.target.value
+                            );
+                          }}
+                        />
+                      )
+                    }
+                    {
+                      // DELIVERY BOY PHONE
+                      order.deliveryboyphone ? (
+                        <p className="order-text">{order.deliveryboyphone}</p>
+                      ) : (
+                        <input
+                          type="text"
+                          placeholder="Enter phone"
+                          className="order-input"
+                          onBlur={(e) => {
+                            changeDeliveryBoyphone(
+                              order.orderid,
+                              order,
+                              e.target.value
+                            );
+                          }}
+                        />
+                      )
+                    }
+                    <p className="order-text">{order.ordercost}</p>
+                    <Link
+                      to={`/showorderdetails/${order.orderid}`}
+                      style={{ backgroundColor: "transparent" }}
+                    >
+                      <button className="show-detail-button">
+                        Show Details
+                      </button>
+                    </Link>
+                  </div>
+                );
+              })}
+          </div>
         </div>
       </div>
-      <div className="order-container-title">
-        <div className="order-row-card1">
-          <p className="order-text">Order Id</p>
-          <p className="order-text">Paid</p>
-          <p className="order-text">Delivery Status</p>
-          <p className="order-text">Delivery Boy Name</p>
-          <p className="order-text">Delivery Boy Phone</p>
-
-          <p className="order-text">Cost</p>
-          <button>Show Details</button>
-        </div>
-        <div className="order-container"  style={{ backgroundImage:`url(${foodImage})`,backgroundRepeat:"no-repeat" }}>
-          {/** DATA */}
-          {allOrders.filter((val) => {
-             if(keyword === ""){
-              return val
-             }
-             else if(
-              val.orderid.toLowerCase().includes(keyword) ||
-              val.orderStatus.toLowerCase().includes(keyword) ||
-              val.deliveryBoyName.toLowerCase().includes(keyword) ||
-              val.ordererAddress.toLowerCase().includes(keyword) ||
-              val.ordererName.toLowerCase().includes(keyword) 
-             ){
-              return val
-             }
-
-          })
-          .filter((val) => {
-            if(allOrdersStatus === ""){
-             return val
-            }
-            else if(
-             val.orderStatus.toLowerCase().includes(allOrdersStatus) 
-    
-            ){
-             return val
-            }
-
-         }).map((order) => {
-            return (
-              <div className="order-row-card" key={order.orderid}>
-                <p className="order-text">{order.orderid}</p>
-                <p className="order-text">{order.orderPayment}</p>
-                <div className="order-card-in">
-                  {order.orderStatus === "pending" && (
-                    <select
-                      onChange={(e) => {
-                        changeOrderStatus(order.orderid, order, e.target.value);
-                      }}
-                    >
-                      <option value="pending">Pending</option>
-                      <option value="ontheway">On the way</option>
-                      <option value="delivered">Delivered</option>
-                      <option value="cancelled">Cancelled</option>
-                    </select>
-                  )}
-                  {order.orderStatus === "ontheway" && (
-                    <select
-                      onChange={(e) => {
-                        changeOrderStatus(order.orderid, order, e.target.value);
-                      }}
-                    >
-                      <option value="pending">Pending</option>
-                      <option value="ontheway">On the way</option>
-                      <option value="delivered">Delivered</option>
-                      <option value="cancelled">Cancelled</option>
-                    </select>
-                  )}
-                  {order.orderStatus === "delivered" && (
-                    <select
-                      onChange={(e) => {
-                        changeOrderStatus(order.orderid, order, e.target.value);
-                      }}
-                    >
-                      <option value="delivered">Delivered</option>
-                      <option value="pending">Pending</option>
-                      <option value="ontheway">On the way</option>
-                      <option value="cancelled">Cancelled</option>
-                    </select>
-                  )}
-                  {order.orderStatus === "cancelled" && (
-                    <p className="order-text">{order.orderStatus}</p>
-                  )}
-                </div>
-
-                {
-                  // DELIVERY BOY NAME
-                  order.deliveryBoyName ? (
-                    <p className="order-text">{order.deliveryBoyName}</p>
-                  ) : (
-                    <input
-                      type="text"
-                      placeholder="Enter Name"
-                      className="order-input"
-                      onBlur={(e) => {
-                        changeDeliveryBoyName(
-                          order.orderid,
-                          order,
-                          e.target.value
-                        );
-                      }}
-                    />
-                  )
-                }
-                {
-                  // DELIVERY BOY PHONE
-                  order.deliveryBoyPhone ? (
-                    <p className="order-text">{order.deliveryBoyPhone}</p>
-                  ) : (
-                    <input
-                      type="text"
-                      placeholder="Enter phone"
-                      className="order-input"
-                      onBlur={(e) => {
-                        changeDeliveryBoyphone(
-                          order.orderid,
-                          order,
-                          e.target.value
-                        );
-                      }}
-                    />
-                  )
-                }
-                <p className="order-text">{order.orderCost}</p>
-                <Link to={`/showorderdetails/${order.orderid}`} style={{backgroundColor:"transparent",}}>
-                <button className="show-detail-button" >Show Details</button>
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
     </>
   );
 };
